@@ -1,7 +1,5 @@
 package br.ce.orlando.pages;
 
-import org.openqa.selenium.By;
-
 import br.ce.orlando.core.BasePage;
 import br.ce.orlando.core.DriverFactory;
 
@@ -20,8 +18,7 @@ public class LoginPage extends BasePage {
 	}
 	
 	public void entrar() {
-		clicarBotao(By.xpath("//button[text()='Entrar']"));
-//		clicarBotao(By.xpath("//button[.='Entrar']"));
+		clicarBotaoPorTexto("Entrar");
 	}
 	
 	public void logar(String email, String senha) {

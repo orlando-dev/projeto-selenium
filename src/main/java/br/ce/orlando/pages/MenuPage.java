@@ -14,4 +14,8 @@ public class MenuPage extends BasePage {
 		clicarLink("Listar");
 	}
 	
+	public void acessarTelaCriarMovimentacao() {
+		clicarLink("Criar Movimentação");
+	}
+	
 }
