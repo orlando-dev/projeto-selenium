@@ -1,0 +1,15 @@
+link para usar o mvn na máquina
+
+https://dicasdejava.com.br/como-instalar-o-maven-no-windows/
+
+
+1 - Após a mvn instalada, abra o prompt de comando e coloque o seguinte comando:
+
+	mvn --version
+Com isso vai mostrar que o maven está instalado.
+
+2 - Se direcione para dentro da pasta do projeto que no caso seria
+
+C:\localX\pastaY\ProjetoSelenium
+	
+	2.1 e utilize o comando mvn clean compile, pode ser que demore e aguarda o BUILD SUCESS.
