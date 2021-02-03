@@ -1,5 +1,7 @@
 package br.ce.orlando.tests;
 
+import static br.ce.orlando.utils.DataUtils.obterDataFormatada;
+
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -21,8 +23,8 @@ public class MovimentacaoTest extends BaseTest{
 	public void testInserirMovimentacao() {
 		menuPage.acessarTelaCriarMovimentacao();
 		
-		movPage.setDataMovimentação("01/09/2019");
-		movPage.setDataPagamento("02/09/2019");
+		movPage.setDataMovimentação(obterDataFormatada(new Date()));
+		movPage.setDataPagamento(obterDataFormatada(new Date()));
 		movPage.setDescricao("Movimentação do Teste");
 		movPage.setInteressado("Interessado Qualquer");
 		movPage.setValor("700");
