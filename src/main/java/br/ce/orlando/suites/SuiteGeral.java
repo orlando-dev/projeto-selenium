@@ -15,7 +15,11 @@ import br.ce.orlando.tests.ResumoTest;
 import br.ce.orlando.tests.SaldoTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ ContaTest.class, MovimentacaoTest.class, RemoverMovimentacaoContaTest.class, SaldoTest.class,
+@SuiteClasses({ 
+		ContaTest.class, 
+		MovimentacaoTest.class, 
+		RemoverMovimentacaoContaTest.class, 
+		SaldoTest.class,
 		ResumoTest.class })
 public class SuiteGeral {
 	private static LoginPage page = new LoginPage();
