@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.ce.orlando.core.BaseTest;
-import br.ce.orlando.core.Propriedades;
 import br.ce.orlando.pages.MenuPage;
 import br.ce.orlando.pages.MovimentacaoPage;
 import br.ce.orlando.utils.DataUtils;
@@ -31,7 +30,7 @@ public class MovimentacaoTest extends BaseTest{
 		movPage.setDescricao("Movimentação do Teste");
 		movPage.setInteressado("Interessado Qualquer");
 		movPage.setValor("700");
-		movPage.setConta(Propriedades.NOME_CONTA_ALTERADA);
+		movPage.setConta("Conta para movimentacoes");
 		movPage.setStatusPago();
 		movPage.salvar();
 		
@@ -70,7 +69,7 @@ public class MovimentacaoTest extends BaseTest{
 		movPage.setDescricao("Movimentação do Teste");
 		movPage.setInteressado("Interessado Qualquer");
 		movPage.setValor("700");
-		movPage.setConta(Propriedades.NOME_CONTA_ALTERADA);
+		movPage.setConta("Conta para movimentacoes");
 		movPage.setStatusPago();
 		movPage.salvar();
 		

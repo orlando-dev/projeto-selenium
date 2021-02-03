@@ -1,12 +1,13 @@
 package br.ce.orlando.pages;
 
+import static br.ce.orlando.core.DriverFactory.getDriver;
+
 import br.ce.orlando.core.BasePage;
-import br.ce.orlando.core.DriverFactory;
 
 public class LoginPage extends BasePage {
 	
 	public void acessarTelaInicial() {
-		DriverFactory.getDriver().get("https://seubarriga.wcaquino.me/login");
+		getDriver().get("https://seubarriga.wcaquino.me/login");
 	}
 	
 	public void setEmail(String email) {

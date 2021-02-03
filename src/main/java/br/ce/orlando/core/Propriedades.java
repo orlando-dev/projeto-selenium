@@ -6,8 +6,6 @@ public class Propriedades {
 	
 	public static Browsers browser = Browsers.CHROME;
 	
-	public static String NOME_CONTA_ALTERADA = "Conta Alterada " + System.nanoTime();
-	
 	public enum Browsers {
 		CHROME,
 		FIREFOX

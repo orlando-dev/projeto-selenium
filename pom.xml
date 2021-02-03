@@ -10,6 +10,24 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+	<build>
+		<testSourceDirectory>src</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugins</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<includes>
+						<include>br/ce/orlando/suites/*.java</include>
+					</includes>
+					<parallel>all</parallel>
+					<threadCount>3</threadCount>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<dependencies>
 		<dependency>
