@@ -5,9 +5,7 @@ import static br.ce.orlando.core.DriverFactory.getDriver;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -16,7 +14,7 @@ import br.ce.orlando.core.DriverFactory;
 import br.ce.orlando.pages.MenuPage;
 import br.ce.orlando.pages.ResumoPage;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ResumoTest extends BaseTest {
 
 	private MenuPage menuPage = new MenuPage();

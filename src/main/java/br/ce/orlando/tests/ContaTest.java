@@ -1,15 +1,13 @@
 package br.ce.orlando.tests;
 
 import org.junit.Assert;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import br.ce.orlando.core.BaseTest;
 import br.ce.orlando.pages.ContasPage;
 import br.ce.orlando.pages.MenuPage;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ContaTest extends BaseTest {
 
 	MenuPage menuPage = new MenuPage();
