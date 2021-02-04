@@ -13,8 +13,27 @@
 Significa que está funcionando se abriu algo do selenium.
 
 5 - Agora criando um nó, abra um novo prompt de comando e coloca:
-	5.1 dentro do mesmo diretório SeleniumGRID	
+	5.1 - Dentro do mesmo diretório SeleniumGRID	
+		
 		java -jar selenium-server-standalone-3.141.59.jar -role node
+	
+	5.2- para ter mais nó
+		
+		java -jar selenium-server-standalone-3.141.59.jar -role node -port 5556 
 
+
+
+6 - Outra máquina se conectando ao seleniumGRID
+	Ela deve ter todos os recursos do java instalado e o próprio selenium server também baixado como descrito no 1.1 acima
+
+7 - Com tudo configurado, nessa máquina nova abra o prompt de comando e coloque o comando:
+	
+	java -jar selenium-server-standalone-3.141.59.jar -role node -hub http://192.168.18.80:4444/grid/register
+	
+	7.1 - Com isso ela se conectará, então terá outro nó no 
+		http://localhost:4444//grid/console
+
+
+	
 
 	
