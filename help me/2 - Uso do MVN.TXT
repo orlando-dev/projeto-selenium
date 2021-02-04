@@ -13,3 +13,14 @@ Com isso vai mostrar que o maven está instalado.
 C:\localX\pastaY\ProjetoSelenium
 	
 	2.1 e utilize o comando mvn clean compile, pode ser que demore e aguarda o BUILD SUCESS.
+
+
+alguns comandos para uso futuros:
+
+mvn --version
+
+mvn clean compile
+
+mvn clean test
+
+mvn test

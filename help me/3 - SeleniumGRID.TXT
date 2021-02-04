@@ -1,0 +1,20 @@
+1 - Baixe a versão do seleniumGRID de igual com a versão do seu selenium webdriver que está localizado no seu pom.xml
+	1.1 - Nome do arquivo .jar à ser baixo é com um nome semelhante a esse; 
+		>> selenium-server-standalone-AquiFicaAVersão.jar
+
+2 - Criado uma pasta, que no caso esse projeto chamado de SeleniumGRID dentro dele coloquei o arquivo .jar
+
+3 - No prompt de comando se direcione até dentro da pasta e uso o comando:
+	java -jar selenium-server-standalone-3.141.59.jar -role hub
+		Mostrará que foi lançado selenium grid na porta 4444
+
+4 - Entre no link 
+	http://localhost:4444/
+Significa que está funcionando se abriu algo do selenium.
+
+5 - Agora criando um nó, abra um novo prompt de comando e coloca:
+	5.1 dentro do mesmo diretório SeleniumGRID	
+		java -jar selenium-server-standalone-3.141.59.jar -role node
+
+
+	
