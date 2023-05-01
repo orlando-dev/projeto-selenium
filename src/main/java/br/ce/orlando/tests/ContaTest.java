@@ -20,7 +20,7 @@ public class ContaTest extends BaseTest {
 		contasPage.setNome("Conta do Teste");
 		contasPage.salvar();
 
-		Assert.assertEquals("Conta adicionada com sucesso!", contasPage.obterMensagemSucesso());
+		Assert.assertEquals("Conta adicionada com sucesso!s", contasPage.obterMensagemSucesso());
 	}
 
 	@Test
@@ -31,7 +31,7 @@ public class ContaTest extends BaseTest {
 		contasPage.setNome("Conta alterada");
 		contasPage.salvar();
 
-		Assert.assertEquals("Conta alterada com sucesso!", contasPage.obterMensagemSucesso());
+		Assert.assertEquals("Conta alterada com sucesso!S", contasPage.obterMensagemSucesso());
 	}
 
 	@Test
@@ -41,7 +41,7 @@ public class ContaTest extends BaseTest {
 		contasPage.setNome("Conta mesmo nome");
 		contasPage.salvar();
 
-		Assert.assertEquals("Já existe uma conta com esse nome!", contasPage.obterMensagemErro());
+		Assert.assertEquals("Já existe uma conta com esse nome!s", contasPage.obterMensagemErro());
 	}
 
 }

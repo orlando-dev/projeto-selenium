@@ -11,6 +11,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -22,7 +24,9 @@ public class BaseTest {
 	public TestName testName = new TestName();
 	
 	private LoginPage page = new LoginPage();
-
+	
+	private String nomeClasse;
+	
 	@Before
 	public void inicializa() {
 		page.acessarTelaInicial();
@@ -33,15 +37,69 @@ public class BaseTest {
 	
 	
 	@After
-	public void finaliza() throws IOException{
+	public void finaliza() throws IOException {
 		TakesScreenshot ss = (TakesScreenshot) getDriver();
 		File arquivo = ss.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(arquivo, new File("target" + File.separator + "screenshot" +
 				File.separator + testName.getMethodName() + ".jpg"));
 		
+		System.out.println("------------------------------------------------\nNome da classe executada: " + getClass().getSimpleName() + ".java");
+		nomeClasse = getClass().getSimpleName();
+		
 		if(Propriedades.FECHAR_BROWSER) {
 			killDriver();
 		}
 	}
-
+	
+	@Rule
+    public TestWatcher watcher = new TestWatcher() {
+		
+        @Override
+        protected void succeeded(Description description) {
+        	
+            System.out.println("\nMétodo: " + description.getMethodName() + " - OK" + "\n------------------------------------------------\n");
+        
+            try {
+				PlanilhaTestes.escreverResultadoTeste("ProjetoSI - Casos de teste - Funcionais Automatizados - E2E.xlsx", nomeClasse + ".java", "OK");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        }
+        
+        @Override
+        protected void failed(Throwable e, Description description) {
+        	
+            if (e instanceof AssertionError) {
+                AssertionError error = (AssertionError) e;
+                System.out.println(description.getMethodName() + " - FALHA: " + error.getMessage() + "\n------------------------------------------------\n");
+                
+                try {
+    				PlanilhaTestes.escreverResultadoTeste("ProjetoSI - Casos de teste - Funcionais Automatizados - E2E.xlsx", nomeClasse + ".java", "FALHA: " + error.getMessage());
+    			} catch (IOException exception) {
+    				exception.printStackTrace();
+    			}
+                
+            } else {
+            	System.out.println("\nMétodo: " + description.getMethodName() + " - ERROR: " + e.getMessage().split("\n")[0] + "\n------------------------------------------------\n");
+                try {
+    				PlanilhaTestes.escreverResultadoTeste("ProjetoSI - Casos de teste - Funcionais Automatizados - E2E.xlsx", nomeClasse + ".java", "ERROR: " + e.getMessage().split("\n")[0]);
+                } catch (IOException exception) {
+    				exception.printStackTrace();
+    			}
+            }
+        }
+        
+        @Override
+        protected void skipped(org.junit.AssumptionViolatedException e, Description description) {
+            
+        	System.out.println("\nMétodo: " + description.getMethodName() + " - SKIP" + "\n------------------------------------------------\n");
+           
+            try {
+				PlanilhaTestes.escreverResultadoTeste("ProjetoSI - Casos de teste - Funcionais Automatizados - E2E.xlsx", nomeClasse + ".java", "SKIP");
+            } catch (IOException exception) {
+				exception.printStackTrace();
+			}
+        }
+    };
+	
 }

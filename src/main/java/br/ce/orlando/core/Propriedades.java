@@ -2,11 +2,11 @@ package br.ce.orlando.core;
 
 public class Propriedades {
 	
-	public static boolean FECHAR_BROWSER = true;
+	public static boolean FECHAR_BROWSER = false;
 	
 	public static Browsers BROWSER = Browsers.CHROME;
 	
-	public static TipoExecucao TIPO_EXECUCAO = TipoExecucao.GRID;
+	public static TipoExecucao TIPO_EXECUCAO = TipoExecucao.LOCAL;
 	
 	public enum Browsers {
 		CHROME,
