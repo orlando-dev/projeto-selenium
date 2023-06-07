@@ -1,5 +1,6 @@
 package br.ce.orlando.core;
 
+
 import static br.ce.orlando.core.DriverFactory.getDriver;
 import static br.ce.orlando.core.DriverFactory.killDriver;
 
@@ -26,6 +27,8 @@ public class BaseTest {
 	private LoginPage page = new LoginPage();
 	
 	private String nomeClasse;
+	
+	private String nomePlanilha = "ProjetoSI - Casos de teste - Funcionais Automatizados - E2E.xlsx";
 	
 	@Before
 	public void inicializa() {
@@ -60,7 +63,7 @@ public class BaseTest {
             System.out.println("\nMétodo: " + description.getMethodName() + " - OK" + "\n------------------------------------------------\n");
         
             try {
-				PlanilhaTestes.escreverResultadoTeste("ProjetoSI - Casos de teste - Funcionais Automatizados - E2E.xlsx", nomeClasse + ".java", "OK");
+				PlanilhaTestes.escreverResultadoTeste(nomePlanilha, nomeClasse + ".java", "OK");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -74,7 +77,7 @@ public class BaseTest {
                 System.out.println(description.getMethodName() + " - FALHA: " + error.getMessage() + "\n------------------------------------------------\n");
                 
                 try {
-    				PlanilhaTestes.escreverResultadoTeste("ProjetoSI - Casos de teste - Funcionais Automatizados - E2E.xlsx", nomeClasse + ".java", "FALHA: " + error.getMessage());
+    				PlanilhaTestes.escreverResultadoTeste(nomePlanilha, nomeClasse + ".java", "FALHA: " + error.getMessage());
     			} catch (IOException exception) {
     				exception.printStackTrace();
     			}
@@ -82,7 +85,7 @@ public class BaseTest {
             } else {
             	System.out.println("\nMétodo: " + description.getMethodName() + " - ERROR: " + e.getMessage().split("\n")[0] + "\n------------------------------------------------\n");
                 try {
-    				PlanilhaTestes.escreverResultadoTeste("ProjetoSI - Casos de teste - Funcionais Automatizados - E2E.xlsx", nomeClasse + ".java", "ERROR: " + e.getMessage().split("\n")[0]);
+    				PlanilhaTestes.escreverResultadoTeste(nomePlanilha, nomeClasse + ".java", "ERROR: " + e.getMessage().split("\n")[0]);
                 } catch (IOException exception) {
     				exception.printStackTrace();
     			}
@@ -95,7 +98,7 @@ public class BaseTest {
         	System.out.println("\nMétodo: " + description.getMethodName() + " - SKIP" + "\n------------------------------------------------\n");
            
             try {
-				PlanilhaTestes.escreverResultadoTeste("ProjetoSI - Casos de teste - Funcionais Automatizados - E2E.xlsx", nomeClasse + ".java", "SKIP");
+				PlanilhaTestes.escreverResultadoTeste(nomePlanilha, nomeClasse + ".java", "SKIP");
             } catch (IOException exception) {
 				exception.printStackTrace();
 			}

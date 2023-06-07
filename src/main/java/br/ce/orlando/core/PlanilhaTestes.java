@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.FillPatternType;
@@ -16,6 +17,8 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import br.ce.orlando.utils.DataUtils;
 
 public class PlanilhaTestes {
     
@@ -59,6 +62,19 @@ public class PlanilhaTestes {
             throw new IllegalArgumentException("Coluna 'RESULTADO OBTIDO' não encontrada na planilha.");
         }
         
+        // Procura a coluna "DATA DE TESTE REALIZADO" para atualizar a data de teste
+        int dataTesteColuna = -1;
+        for (Cell celula : sheet.getRow(0)) {
+            if (celula.getStringCellValue().equals("DATA DE TESTE REALIZADO")) {
+                dataTesteColuna = celula.getColumnIndex();
+                break;
+            }
+        }
+        
+        if (dataTesteColuna == -1) {
+            throw new IllegalArgumentException("Coluna 'DATA DE TESTE REALIZADO' não encontrada na planilha.");
+        }
+        
         // Procura o nome da classe de teste na coluna "NOME DO TESTE AUTOMATIZADO"
         for (Row linha : sheet) {
             Cell cell = linha.getCell(nomeColuna);
@@ -66,9 +82,18 @@ public class PlanilhaTestes {
                 // Atualiza o resultado na coluna "RESULTADO OBTIDO"
                 XSSFCell resultCell = (XSSFCell) linha.getCell(resultadoColuna, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
                 resultCell.setCellValue(resultado);
+                
+                // Converte a data formatada em um valor numérico
+                String dataAtual = DataUtils.obterDataFormatada(new Date());
+                
+                // Atualiza a data de teste na coluna "DATA DE TESTE REALIZADO"
+                XSSFCell dataTesteCell = (XSSFCell) linha.getCell(dataTesteColuna, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                dataTesteCell.setCellValue(dataAtual);
+                
                 break;
             }
         }
+        
         
         // Fecha o arquivo de entrada
         inputStream.close();
