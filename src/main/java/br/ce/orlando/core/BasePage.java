@@ -190,6 +190,41 @@ public class BasePage {
 		return js.executeScript(cmd, param);
 	}
 	
+	public Object executarJS(String script) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+		WebElement element = (WebElement) jsExecutor.executeScript(script);
+		return element;
+	}
+	
+	public void clicarElementoJS(String jsPath) {
+		WebElement elemento = (WebElement) executarJS("return " + jsPath);
+		elemento.click();
+	}
+
+	public void limparTextoViaJS(String jsPath) {
+	    WebElement element = (WebElement) executarJS("return " + jsPath);
+	    element.clear();
+	}
+
+	public void escreverElementoViaJS(String jsPath, String texto) {
+		WebElement elemento = (WebElement) executarJS("return " + jsPath);
+		elemento.sendKeys(texto);
+	}
+	
+	public String obterTextoViaJS(String jsPath) {
+	    WebElement element = (WebElement) executarJS("return " + jsPath);
+	    return element.getText();
+	}
+
+	public void scrollToViaJS(String jsPath) {
+		WebElement element = (WebElement) executarJS("return " + jsPath);
+		executarJS("window.scrollBy(0, arguments[0])", element.getLocation().y);
+	}
+	
+	public void scrollTo(By by) {
+		WebElement element = getDriver().findElement(by);
+		executarJS("window.scrollBy(0, arguments[0])", element.getLocation().y);
+	}
 	/************** Tabela *********************/
 	
 	public WebElement obterCelula(String colunaBusca, String valor, String colunaBotao, String idTabela){
